@@ -412,7 +412,7 @@ types:
     depth: 20
     oncreate: |
       this.directionTimer = ct.random.range(1, 50);
-      this.speed = 3;
+      this.speed = 6;
       this.direction = 315;
       this.wiggleTime = 0;
     onstep: |-
@@ -453,11 +453,6 @@ types:
           this.scale.x = 1;
       }
 
-      // Remove if collided with arm
-      let slapped = ct.place.meet(this, this.x, this.y, 'arm');
-      if (slapped && ct.actions.Tap.pressed) {
-          this.kill = true;
-      }
       this.wiggleTime += ct.delta * 0.2;
       this.rotation = Math.sin(this.wiggleTime) * 5;
 
@@ -467,19 +462,12 @@ types:
       // For debugging
       //ct.types.copy('mosquito', ct.random.range(800), ct.random.range(600));
 
-      // On kill, change bg of room to happy
-      if (ct.backgrounds.list['neutral']) {
-          let bg = ct.backgrounds.list['neutral'];
-          bg.kill;
-          ct.backgrounds.add('happy', 0, -10);
-      }
-
       this.getRoom().won = true;
     texture: e25f09d9-4e17-4c2f-abad-1021182c7dc8
     extends:
       ctype: Bug
     uid: 2d208313-f3b8-4520-9b57-897ebb99c198
-    lastmod: 1606543153622
+    lastmod: 1606599187926
 sounds: []
 styles: []
 rooms:
@@ -495,8 +483,8 @@ rooms:
       this.mosquito = ct.types.copy('mosquito', 10, 10);
 
       // Set game timer
-      this.initTime = 10000;
-      this.gameTimer = new CtTimer(initTime, 'gameTimer');
+      this.initTime = 20000;
+      this.gameTimer = new CtTimer(this.initTime, 'gameTimer');
       this.gameTimer.then(() => {
           if (this.won) {
               ct.transition.fadeOut()
@@ -511,7 +499,7 @@ rooms:
               });
           }
       })
-    onstep: |+
+    onstep: |
       // On tap action, animate the arm so that the hand slaps the tapped area
       if (ct.actions.Tap.pressed) {
           // Get direction of tap
@@ -519,7 +507,6 @@ rooms:
           // Rotate arm towards tap
           this.arm.rotation = direction - 180;
           
-
           // Get distance of tap
           let distance = ct.u.pointDistance(448, 320, ct.touch.x, ct.touch.y);
           // Scale so hitbox ends on tap
@@ -532,6 +519,11 @@ rooms:
               this.arm.scale.x = shortScale;
               this.arm.scale.y = shortScale;
           }
+
+          // Determine if mosquito was under the hand
+          if (ct.place.occupied(this.arm, 'Bug')) {
+              this.mosquito.kill = true;
+          }
       }
 
       // On release, put hand back under cover
@@ -542,14 +534,17 @@ rooms:
       }
 
       // Change bg to indicate time remaining
-      if (this.gameTimer.timeLeft < initTime/2) {
+      if (this.gameTimer.timeLeft < this.initTime/2) {
           ct.backgrounds.add('furrowed', 0, -9);
       }
 
-      if (this.gameTimer.timeLeft < initTime/6) {
+      if (this.gameTimer.timeLeft < this.initTime/6) {
           ct.backgrounds.add('lose', 0, -8);
       }
 
+      if (this.mosquito.kill == true) {
+          ct.backgrounds.add('happy', 0, -7);
+      }
     ondraw: ''
     onleave: ''
     width: 800
