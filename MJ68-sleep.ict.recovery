@@ -1,0 +1,669 @@
+ctjsVersion: 1.5.0
+notes: |
+  Arm joint coordinates: (448,320)
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  mouse: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+  touch:
+    mousetouch: true
+    preventdefault: false
+  tween: {}
+  random: {}
+  transition: {}
+textures:
+  - name: bed_sheet
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 600
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: ie3126ae9-8463-4f73-ae31-af1d423b7c1c.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 600
+    bottom: 0
+    uid: e3126ae9-8463-4f73-ae31-af1d423b7c1c
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\bed_sheet.png'
+    lastmod: 1606540407736
+    tiled: true
+  - name: clock_desk
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 844
+    imgHeight: 932
+    width: 844
+    height: 932
+    offx: 0
+    offy: 0
+    origname: i21d7063d-d537-47fd-b9a3-d35de2b535fb.png
+    shape: rect
+    left: 0
+    right: 844
+    top: 0
+    bottom: 932
+    uid: 21d7063d-d537-47fd-b9a3-d35de2b535fb
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\clock_desk.png'
+  - name: arm
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 315
+      - 88
+    marginx: 0
+    marginy: 0
+    imgWidth: 334
+    imgHeight: 132
+    width: 334
+    height: 132
+    offx: 0
+    offy: 0
+    origname: ieba9598f-467c-43a2-bb02-d8e9ec9a437e.png
+    shape: strip
+    left: 296
+    right: -225
+    top: 77
+    bottom: 30
+    uid: eba9598f-467c-43a2-bb02-d8e9ec9a437e
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\arm.png'
+    stripPoints:
+      - x: -220.32830810546872
+        'y': -2.179417928059891
+      - x: -228.9949747721354
+        'y': -24.512751261393234
+      - x: -228.6616414388021
+        'y': -43.84608459472656
+      - x: -238.32830810546872
+        'y': -66.51275126139322
+      - x: -252.66164143880212
+        'y': -76.84608459472656
+      - x: -254.99497477213544
+        'y': -62.512751261393234
+      - x: -248.9949747721354
+        'y': -31.846084594726562
+      - x: -289.6616414388021
+        'y': -45.512751261393234
+      - x: -294.66164143880206
+        'y': -40.84608459472656
+      - x: -271.6616414388021
+        'y': -20.84608459472656
+      - x: -292.66164143880206
+        'y': -17.1794179280599
+      - x: -297.99497477213544
+        'y': -11.179417928059891
+      - x: -269.66164143880206
+        'y': -6.179417928059896
+      - x: -279.99497477213544
+        'y': -2.1794179280598955
+      - x: -279.99497477213544
+        'y': 11.48724873860677
+      - x: -250.9949747721354
+        'y': -1.512751261393234
+      - x: -254.9949747721354
+        'y': 32.153915405273445
+      - x: -241.33333333333334
+        'y': 7.999999999999998
+    closedStrip: true
+    symmetryStrip: false
+    r: 133
+    lastmod: 1606546217293
+  - name: furrowed
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: i2a4abccf-01ae-47af-b5cd-ff3581b8c02a.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: 2a4abccf-01ae-47af-b5cd-ff3581b8c02a
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\furrowed.png'
+    tiled: true
+    lastmod: 1606546602968
+  - name: happy
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: iab742a5e-2254-4a66-81b9-ce1710cfe4dc.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: ab742a5e-2254-4a66-81b9-ce1710cfe4dc
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\happy.png'
+    tiled: true
+    lastmod: 1606545518545
+  - name: neutral
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: i20fd1743-9f84-4092-a412-e37d84aff776.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: 20fd1743-9f84-4092-a412-e37d84aff776
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\neutral.png'
+    tiled: true
+    lastmod: 1606537426060
+  - name: lose
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: i2ee1af2f-9083-483f-83e0-a85d2a06fe78.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: 2ee1af2f-9083-483f-83e0-a85d2a06fe78
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\lose.png'
+    tiled: true
+    lastmod: 1606548223793
+  - name: mosquito
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 25
+      - 27
+    marginx: 0
+    marginy: 0
+    imgWidth: 51
+    imgHeight: 54
+    width: 51
+    height: 54
+    offx: 0
+    offy: 0
+    origname: ie25f09d9-4e17-4c2f-abad-1021182c7dc8.png
+    shape: rect
+    left: 25
+    right: 26
+    top: 27
+    bottom: 27
+    uid: e25f09d9-4e17-4c2f-abad-1021182c7dc8
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\mosquito.png'
+    lastmod: 1606550469328
+  - name: win_1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: i6a001ca9-c076-45a0-9d17-5b42b23c59e5.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: 6a001ca9-c076-45a0-9d17-5b42b23c59e5
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\win_1.png'
+    tiled: true
+    lastmod: 1606548409833
+  - name: lose_screen
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: i313d9dfb-23a9-4bc2-9148-df266b7143fb.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: 313d9dfb-23a9-4bc2-9148-df266b7143fb
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\lose_screen.png'
+    tiled: true
+    lastmod: 1606548404736
+  - name: lose_end
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: i03feb0a4-9589-4504-ae99-9244442ee1d7.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: 03feb0a4-9589-4504-ae99-9244442ee1d7
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\lose_end.png'
+    tiled: true
+    lastmod: 1606548597150
+  - name: happy_win_end
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: id0fe2a61-bc49-4210-a653-dd6c7b968e48.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: d0fe2a61-bc49-4210-a653-dd6c7b968e48
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\happy_win_end.png'
+    tiled: true
+    lastmod: 1606548418554
+skeletons: []
+types:
+  - name: arm
+    depth: 2
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    ondestroy: ''
+    texture: eba9598f-467c-43a2-bb02-d8e9ec9a437e
+    extends: {}
+    uid: ae0d9610-42a0-4b01-9bd6-a3e2093b0d75
+    lastmod: 1606543136860
+  - name: bed_sheet
+    depth: 0
+    oncreate: |
+      this.breathTimer = ct.timer.add(1000, 'breathTimer');
+    onstep: |-
+      console.log(this.breathTimer.time);
+      if (this.breathTimer.time % 2 == 0) {
+          this.scale = 1.03;
+      }
+      if (this.breathTimer.time % 2 == 1) {
+          this.scale = 1;
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: e3126ae9-8463-4f73-ae31-af1d423b7c1c
+    extends: {}
+    uid: f7d138a7-ec06-4853-b6c7-950d118f8a8e
+    lastmod: 1606541003359
+  - name: mosquito
+    depth: 20
+    oncreate: |
+      this.directionTimer = ct.random.range(1, 50);
+      this.speed = 3;
+      this.direction = 315;
+      this.wiggleTime = 0;
+    onstep: |-
+      // Randomly change direction
+      this.directionTimer -= ct.delta;
+      if (this.directionTimer <=0) {
+          // Reset timer
+          this.directionTimer = ct.random.range(1, 50);
+          this.direction = ct.random.range(0, 360);
+      }
+
+      // Change direction at edges
+      if (this.x > ct.camera.width) {
+          this.x = ct.camera.width;
+          this.direction = ct.random.range(110,250);
+      }
+
+      if (this.x < 0) {
+          this.x = 0;
+          this.direction = ct.random.range(110-90,250+90);
+      }
+
+      if (this.y > ct.camera.height) {
+          this.y = ct.camera.height;
+          this.direction = ct.random.range(20,160);
+      }
+
+      if (this.y < 0) {
+          this.y = 0;
+          this.direction = ct.random.range(20+180,160+180);
+      }
+
+      // If direction to right, flip to right
+      if (this.direction < 90 || this.direction > 270) {
+          this.scale.x = -1;
+      }
+      else {
+          this.scale.x = 1;
+      }
+
+      // Remove if collided with arm
+      let slapped = ct.place.meet(this, this.x, this.y, 'arm');
+      if (slapped && ct.actions.Tap.pressed) {
+          this.kill = true;
+      }
+      this.wiggleTime += ct.delta * 0.2;
+      this.rotation = Math.sin(this.wiggleTime) * 5;
+
+      this.move();
+    ondraw: ''
+    ondestroy: |-
+      // For debugging
+      //ct.types.copy('mosquito', ct.random.range(800), ct.random.range(600));
+
+      // On kill, change bg of room to happy
+      if (ct.backgrounds.list['neutral']) {
+          let bg = ct.backgrounds.list['neutral'];
+          bg.kill;
+          ct.backgrounds.add('happy', 0, -10);
+      }
+
+      this.getRoom().won = true;
+    texture: e25f09d9-4e17-4c2f-abad-1021182c7dc8
+    extends:
+      ctype: Bug
+    uid: 2d208313-f3b8-4520-9b57-897ebb99c198
+    lastmod: 1606543153622
+sounds: []
+styles: []
+rooms:
+  - name: Main
+    oncreate: |-
+      // Starting position of arm rotated 170, scale X 0.5
+      this.arm = ct.types.copy('arm', 448, 320);
+      this.arm.rotation = 170;
+      this.arm.scale.x = 0.5;
+      this.won = false;
+
+      // Mosquito spawns offscreen somewhere
+      this.mosquito = ct.types.copy('mosquito', 10, 10);
+
+      // Set game timer
+      this.initTime = 10000;
+      this.gameTimer = new CtTimer(this.initTime, 'gameTimer');
+      this.gameTimer.then(() => {
+          if (this.won) {
+              ct.transition.fadeOut()
+              .then(() => {
+                  ct.rooms.switch('EndWin');
+              });
+          }
+          else {
+              ct.transition.fadeOut()
+              .then(() => {
+                  ct.rooms.switch('EndLose');
+              });
+          }
+      })
+    onstep: |+
+      // On tap action, animate the arm so that the hand slaps the tapped area
+      if (ct.actions.Tap.pressed) {
+          // Get direction of tap
+          let direction = ct.u.pointDirection(448, 320, ct.touch.x, ct.touch.y);
+          // Rotate arm towards tap
+          this.arm.rotation = direction - 180;
+          
+
+          // Get distance of tap
+          let distance = ct.u.pointDistance(448, 320, ct.touch.x, ct.touch.y);
+          // Scale so hitbox ends on tap
+          if (distance > 334) {
+              this.arm.scale.x = 1;
+              this.arm.scale.y = 1;
+          }
+          else {
+              let shortScale = distance/334;
+              this.arm.scale.x = shortScale;
+              this.arm.scale.y = shortScale;
+          }
+      }
+
+      // On release, put hand back under cover
+      if (ct.actions.Tap.released) {
+          this.arm.rotation = 170;
+          this.arm.scale.x = 0.5;
+          this.arm.scale.y = 1;
+      }
+
+      // Change bg to indicate time remaining
+      if (this.gameTimer.timeLeft < this.initTime/2) {
+          ct.backgrounds.add('furrowed', 0, -9);
+      }
+
+      if (this.gameTimer.timeLeft < this.initTime/6) {
+          ct.backgrounds.add('lose', 0, -8);
+      }
+
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds:
+      - depth: -10
+        texture: 20fd1743-9f84-4092-a412-e37d84aff776
+        extends:
+          repeat: no-repeat
+      - depth: 10
+        texture: e3126ae9-8463-4f73-ae31-af1d423b7c1c
+        extends:
+          repeat: no-repeat
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 55371b42-52a0-44ea-b577-93690c654ee9
+    thumbnail: 93690c654ee9
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1606550247436
+  - name: EndWin
+    oncreate: |-
+      // Play bird music etc
+      let timer = ct.timer.add(3000, 'end');
+      timer.then(() => {
+          ct.backgrounds.add('win_1', 0, 5);
+      });
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds:
+      - depth: 0
+        texture: d0fe2a61-bc49-4210-a653-dd6c7b968e48
+        extends:
+          repeat: no-repeat
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: bf0c3960-2fbe-4282-af1b-f5c4e05b93c1
+    thumbnail: f5c4e05b93c1
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1606549932551
+  - name: EndLose
+    oncreate: |-
+      // Play bird music etc
+      let timer = ct.timer.add(3000, 'end');
+      timer.then(() => {
+          ct.backgrounds.add('lose_screen', 0, 5);
+      });
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds:
+      - depth: 1
+        texture: 03feb0a4-9589-4504-ae99-9244442ee1d7
+        extends:
+          repeat: no-repeat
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 8e07aede-668f-4b7b-aff6-91f9385d1de3
+    thumbnail: 91f9385d1de3
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1606549881287
+actions:
+  - name: Tap
+    methods:
+      - code: mouse.Left
+      - code: touch.Any
+emitterTandems: []
+scripts: []
+starting: 0
+settings:
+  authoring:
+    author: ''
+    site: ''
+    title: ''
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: false
+    highDensity: true
+    desktopMode: maximized
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    icon: -1
+    accent: '#446adb'
+    invertPreloaderScheme: true
+  fps: 30
+fonts: []
+startroom: 55371b42-52a0-44ea-b577-93690c654ee9
