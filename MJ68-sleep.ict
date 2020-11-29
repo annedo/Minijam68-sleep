@@ -482,8 +482,15 @@ rooms:
       this.mosquitoCounter = 0;
       this.maxMosquito = 5;
 
-      // Initial mosquito spawns offscreen somewhere
-      this.mosquito = ct.types.copy('mosquito', 10, 10);
+      this.SpawnMosquito = (() => {
+          var randomX = ct.random.range(0, 800); // TODO - get this value from properties
+          var randomY = ct.random.range(0, 600); // TODO - get this value from properties
+
+          return ct.types.copy('mosquito', randomX, randomY);
+      });
+
+      // Initial mosquito spawn
+      this.mosquito = this.SpawnMosquito();
 
       // Set game timer
       var timerLength = 20000;
@@ -563,7 +570,7 @@ rooms:
               this.won = true;
           }
           else if (this.mosquito.kill) {
-              this.mosquito = ct.types.copy('mosquito', 10, 10); // Make mosquito alive
+              this.mosquito = this.SpawnMosquito();
           }
     ondraw: ''
     onleave: ''
@@ -657,7 +664,7 @@ settings:
   authoring:
     author: Nathan Laneau
     site: ''
-    title: Nathan
+    title: ''
     version:
       - 0
       - 0
