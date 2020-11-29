@@ -843,7 +843,6 @@ types:
     ondestroy: |-
       // For debugging
       //ct.types.copy('mosquito', ct.random.range(800), ct.random.range(600));
-
       this.tex = ct.random.dice(
           'blood_1',
           'blood_2',
@@ -1010,11 +1009,8 @@ sounds:
   - name: failure_trombone
     uid: 78ccc1e9-09cb-4464-9849-4294e3bac1ec
     origname: s78ccc1e9-09cb-4464-9849-4294e3bac1ec.mp3
-    lastmod: 1606610463295
-  - name: alarm
-    uid: e808004b-d58d-4e28-8f92-5820fdd9b6a7
-    origname: se808004b-d58d-4e28-8f92-5820fdd9b6a7.mp3
-    lastmod: 1606619980987
+    lastmod: 1606608303676
+sounds: []
 styles: []
 rooms:
   - name: Main
@@ -1111,7 +1107,6 @@ rooms:
                   volume: 0.50
               });
             }
-          
           // On release, put hand back under cover
           if (ct.actions.Tap.released) {
               this.arm.rotation = 170;
@@ -1123,6 +1118,7 @@ rooms:
           // if (!this.mosquito.kill) {
           //     ct.backgrounds.add('furrowed', 0, -9);
           // }
+
 
           // if (this.gameTimer.timeLeft == 0 || this.mosquito.kill) {
           //     if (this.won) {
@@ -1171,7 +1167,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606620506891
+    lastmod: 1606611445243
   - name: EndWin
     oncreate: |-
       // Play bird music etc
