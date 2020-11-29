@@ -389,7 +389,7 @@ types:
     texture: eba9598f-467c-43a2-bb02-d8e9ec9a437e
     extends: {}
     uid: ae0d9610-42a0-4b01-9bd6-a3e2093b0d75
-    lastmod: 1606543136860
+    lastmod: 1606608113075
   - name: bed_sheet
     depth: 0
     oncreate: |
@@ -407,14 +407,15 @@ types:
     texture: e3126ae9-8463-4f73-ae31-af1d423b7c1c
     extends: {}
     uid: f7d138a7-ec06-4853-b6c7-950d118f8a8e
-    lastmod: 1606541003359
+    lastmod: 1606602706741
   - name: mosquito
     depth: 20
-    oncreate: |
+    oncreate: |-
       this.directionTimer = ct.random.range(1, 50);
       this.speed = 6;
       this.direction = 315;
       this.wiggleTime = 0;
+      this.kill = false;
     onstep: |-
       // Randomly change direction
       this.directionTimer -= ct.delta;
@@ -462,12 +463,12 @@ types:
       // For debugging
       //ct.types.copy('mosquito', ct.random.range(800), ct.random.range(600));
 
-      this.getRoom().won = true;
+      this.kill = true;
     texture: e25f09d9-4e17-4c2f-abad-1021182c7dc8
     extends:
       ctype: Bug
     uid: 2d208313-f3b8-4520-9b57-897ebb99c198
-    lastmod: 1606599187926
+    lastmod: 1606608303676
 sounds: []
 styles: []
 rooms:
@@ -478,13 +479,18 @@ rooms:
       this.arm.rotation = 170;
       this.arm.scale.x = 0.5;
       this.won = false;
+      this.mosquitoCounter = 0;
+      this.maxMosquito = 5;
 
-      // Mosquito spawns offscreen somewhere
+      // Initial mosquito spawns offscreen somewhere
       this.mosquito = ct.types.copy('mosquito', 10, 10);
 
       // Set game timer
-      this.initTime = 20000;
-      this.gameTimer = new CtTimer(this.initTime, 'gameTimer');
+      var timerLength = 20000;
+      var timerName = 'gameTimer';
+
+      this.gameTimer = new CtTimer(timerLength, timerName);
+
       this.gameTimer.then(() => {
           if (this.won) {
               ct.transition.fadeOut()
@@ -499,52 +505,66 @@ rooms:
               });
           }
       })
-    onstep: |
-      // On tap action, animate the arm so that the hand slaps the tapped area
-      if (ct.actions.Tap.pressed) {
-          // Get direction of tap
-          let direction = ct.u.pointDirection(448, 320, ct.touch.x, ct.touch.y);
-          // Rotate arm towards tap
-          this.arm.rotation = direction - 180;
-          
-          // Get distance of tap
-          let distance = ct.u.pointDistance(448, 320, ct.touch.x, ct.touch.y);
-          // Scale so hitbox ends on tap
-          if (distance > 334) {
-              this.arm.scale.x = 1;
+    onstep: |2-
+          // On tap action, animate the arm so that the hand slaps the tapped area
+          if (ct.actions.Tap.pressed) {
+              // Get direction of tap
+              let direction = ct.u.pointDirection(448, 320, ct.touch.x, ct.touch.y);
+              // Rotate arm towards tap
+              this.arm.rotation = direction - 180;
+              
+              // Get distance of tap
+              let distance = ct.u.pointDistance(448, 320, ct.touch.x, ct.touch.y);
+              // Scale so hitbox ends on tap
+              if (distance > 334) {
+                  this.arm.scale.x = 1;
+                  this.arm.scale.y = 1;
+              }
+              else {
+                  let shortScale = distance/334;
+                  this.arm.scale.x = shortScale;
+                  this.arm.scale.y = shortScale;
+              }
+
+              // Determine if mosquito was under the hand
+              if (ct.place.occupied(this.arm, 'Bug')) {
+                  this.mosquito.kill = true;
+              }
+          }
+
+          // On release, put hand back under cover
+          if (ct.actions.Tap.released) {
+              this.arm.rotation = 170;
+              this.arm.scale.x = 0.5;
               this.arm.scale.y = 1;
           }
-          else {
-              let shortScale = distance/334;
-              this.arm.scale.x = shortScale;
-              this.arm.scale.y = shortScale;
+
+          // Change bgs based off game statuses
+          if (!this.mosquito.kill) {
+              ct.backgrounds.add('furrowed', 0, -9);
           }
 
-          // Determine if mosquito was under the hand
-          if (ct.place.occupied(this.arm, 'Bug')) {
-              this.mosquito.kill = true;
+          if (this.gameTimer.timeLeft == 0 || this.mosquito.kill) {
+              if (this.won) {
+                  ct.backgrounds.add('happy', 0, -7); 
+              }
+              else {
+                  ct.backgrounds.add('lose', 0, -8);
+              }        
           }
-      }
 
-      // On release, put hand back under cover
-      if (ct.actions.Tap.released) {
-          this.arm.rotation = 170;
-          this.arm.scale.x = 0.5;
-          this.arm.scale.y = 1;
-      }
+          if (this.mosquito.kill && !this.won) {
+              this.mosquitoCounter++;               
+          }
 
-      // Change bg to indicate time remaining
-      if (this.gameTimer.timeLeft < this.initTime/2) {
-          ct.backgrounds.add('furrowed', 0, -9);
-      }
+          console.log(this.mosquitoCounter + " " + this.maxMosquito);
 
-      if (this.gameTimer.timeLeft < this.initTime/6) {
-          ct.backgrounds.add('lose', 0, -8);
-      }
-
-      if (this.mosquito.kill == true) {
-          ct.backgrounds.add('happy', 0, -7);
-      }
+          if (this.mosquitoCounter >= this.maxMosquito) {    
+              this.won = true;
+          }
+          else if (this.mosquito.kill) {
+              this.mosquito = ct.types.copy('mosquito', 10, 10); // Make mosquito alive
+          }
     ondraw: ''
     onleave: ''
     width: 800
@@ -568,7 +588,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606550247436
+    lastmod: 1606611445243
   - name: EndWin
     oncreate: |-
       // Play bird music etc
@@ -635,9 +655,9 @@ scripts: []
 starting: 0
 settings:
   authoring:
-    author: ''
+    author: Nathan Laneau
     site: ''
-    title: ''
+    title: Nathan
     version:
       - 0
       - 0
