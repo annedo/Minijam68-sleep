@@ -461,8 +461,6 @@ types:
     ondestroy: |-
       // For debugging
       //ct.types.copy('mosquito', ct.random.range(800), ct.random.range(600));
-
-      this.kill = true;
     texture: e25f09d9-4e17-4c2f-abad-1021182c7dc8
     extends:
       ctype: Bug
@@ -485,8 +483,8 @@ rooms:
       this.SpawnMosquito = (() => {
           var edgeSpawn = Math.floor(ct.random.range(0, 4)); // Random screen edge for the spawn
 
-          var maxWidth = 800; // TODO - get this value from properties
-          var maxHeight = 600; // TODO - get this value from properties
+          var maxWidth = ct.camera.width;
+          var maxHeight = ct.camera.height;
 
           var spawnPadding = 10;
 
@@ -581,27 +579,29 @@ rooms:
           }
 
           // Change bgs based off game statuses
-          if (!this.mosquito.kill) {
-              ct.backgrounds.add('furrowed', 0, -9);
+          if (this.gameTimer.timeLeft < this.gameTimer.time && !this.won) {
+              if (!ct.backgrounds.list['furrowed']) {
+                  ct.backgrounds.add('furrowed', 0, -9); // after half of time has elapsed
+              }        
           }
 
-          if (this.gameTimer.timeLeft == 0 || this.mosquito.kill) {
-              if (this.won) {
-                  ct.backgrounds.add('happy', 0, -7); 
-              }
-              else {
-                  ct.backgrounds.add('lose', 0, -8);
-              }        
+          if (this.gameTimer.timeLeft == 0) {
+              if (!this.won) {
+                  if (!ct.backgrounds.list['lose']) {
+                  ct.backgrounds.add('lose', 0, -7); // running out of time and if you lost
+                  }
+              }  
           }
 
           if (this.mosquito.kill && !this.won) {
               this.mosquitoCounter++;               
           }
 
-          console.log(this.mosquitoCounter + " " + this.maxMosquito);
-
           if (this.mosquitoCounter >= this.maxMosquito) {    
               this.won = true;
+              if (!ct.backgrounds.list['happy']) {
+                  ct.backgrounds.add('happy', 0, -8); // killed all mosquitoes
+              }    
           }
           else if (this.mosquito.kill) {
               this.mosquito = this.SpawnMosquito();
@@ -629,7 +629,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606611445243
+    lastmod: 1606625400763
   - name: EndWin
     oncreate: |-
       // Play bird music etc
@@ -692,7 +692,9 @@ actions:
       - code: mouse.Left
       - code: touch.Any
 emitterTandems: []
-scripts: []
+scripts:
+  - name: New Script
+    code: ''
 starting: 0
 settings:
   authoring:
