@@ -415,7 +415,6 @@ types:
       this.speed = 6;
       this.direction = 315;
       this.wiggleTime = 0;
-      this.kill = false;
     onstep: |-
       // Randomly change direction
       this.directionTimer -= ct.delta;
@@ -482,9 +481,44 @@ rooms:
       this.mosquitoCounter = 0;
       this.maxMosquito = 5;
 
+      // Returns a mosquito that is set to spawn along the perimeter of the room
       this.SpawnMosquito = (() => {
-          var randomX = ct.random.range(0, 800); // TODO - get this value from properties
-          var randomY = ct.random.range(0, 600); // TODO - get this value from properties
+          var edgeSpawn = Math.floor(ct.random.range(0, 4)); // Random screen edge for the spawn
+
+          var maxWidth = 800; // TODO - get this value from properties
+          var maxHeight = 600; // TODO - get this value from properties
+
+          var spawnPadding = 10;
+
+          var randomX = 0;
+          var randomY = 0;
+          switch (edgeSpawn) {
+              case 0:
+                  // TOP
+                  randomX = ct.random.range(0, maxWidth);
+                  randomY = ct.random.range(0, spawnPadding);
+                  break;
+              case 1:
+                  // RIGHT
+                  randomX = ct.random.range((maxWidth - spawnPadding), maxWidth);
+                  randomY = ct.random.range(0, maxHeight);
+                  break;
+              case 2:
+                  // BOTTOM
+                  randomX = ct.random.range(0, maxWidth);
+                  randomY = ct.random.range(maxHeight - spawnPadding, maxHeight);
+                  break;
+              case 3:
+                  // LEFT
+                  randomX = ct.random.range(0, spawnPadding);
+                  randomY = ct.random.range(0, maxHeight);
+                  break;
+              default:
+                  // TOP
+                  randomX = ct.random.range(0, maxWidth);
+                  randomY = ct.random.range(0, spawnPadding);
+                  break;
+          }
 
           return ct.types.copy('mosquito', randomX, randomY);
       });
