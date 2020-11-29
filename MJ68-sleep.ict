@@ -378,6 +378,182 @@ textures:
     source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\happy_win_end.png'
     tiled: true
     lastmod: 1606548418554
+  - name: clock_desk_3
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: ia2d8a9b9-ceed-4c02-b281-2a5dc25bb6c6.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: a2d8a9b9-ceed-4c02-b281-2a5dc25bb6c6
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\clock_desk_3.png'
+  - name: clock_desk_2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i10f49da0-39f8-40f2-be17-77397bad8d94.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 10f49da0-39f8-40f2-be17-77397bad8d94
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\clock_desk_2.png'
+  - name: clock_desk_1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i66739ca4-4e35-4054-ba7c-88d353ed64a4.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 66739ca4-4e35-4054-ba7c-88d353ed64a4
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\clock_desk_1.png'
+    lastmod: 1606602598875
+  - name: clock_desk_4
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i0d1c5450-61d3-49aa-9771-79a761a10655.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 0d1c5450-61d3-49aa-9771-79a761a10655
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\clock_desk_4.png'
+  - name: clock_desk_7
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: iba61f364-41fb-42e2-b164-6bcb2c75c75b.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: ba61f364-41fb-42e2-b164-6bcb2c75c75b
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\clock_desk_7.png'
+  - name: clock_desk_6
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i4b43d731-45c2-4f53-bce5-76620641bf18.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 4b43d731-45c2-4f53-bce5-76620641bf18
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\clock_desk_6.png'
+  - name: clock_desk_5
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i1f9d8b43-4f7b-4a0f-b796-855966d4e5b9.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 1f9d8b43-4f7b-4a0f-b796-855966d4e5b9
+    padding: 1
+    source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\clock_desk_5.png'
 skeletons: []
 types:
   - name: arm
@@ -407,7 +583,7 @@ types:
     texture: e3126ae9-8463-4f73-ae31-af1d423b7c1c
     extends: {}
     uid: f7d138a7-ec06-4853-b6c7-950d118f8a8e
-    lastmod: 1606541003359
+    lastmod: 1606602891235
   - name: mosquito
     depth: 20
     oncreate: |
@@ -467,7 +643,41 @@ types:
     extends:
       ctype: Bug
     uid: 2d208313-f3b8-4520-9b57-897ebb99c198
-    lastmod: 1606599187926
+    lastmod: 1606600496561
+  - name: clock_desk_1
+    depth: 9
+    oncreate: >-
+      // Change clock face at every 6th interval so it doesn't matter what the
+      starting time is
+
+      this.timeStep = ct.room.initTime;
+
+      this.clockTimer = this.timeStep;
+
+      console.log(timeStep);
+
+      console.log(typeof(timeStep));
+
+      this.currentFace = 1;
+    onstep: |-
+      this.clockTimer -= ct.delta;
+      if (this.clockTimer <= 0) {
+          // Reset timer
+          this.clockTimer = this.timeStep;
+
+          // Change face texture if not the last one
+          if (this.currentFace < 7) {
+              this.currentFace += 1;
+              this.tex = 'clock_desk_' + this.currentFace;
+          }
+          console.log(this.currentFace)
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 66739ca4-4e35-4054-ba7c-88d353ed64a4
+    extends: {}
+    uid: 8316dc22-8316-47c5-bd98-4392f091de44
+    lastmod: 1606603338525
 sounds: []
 styles: []
 rooms:
@@ -481,9 +691,10 @@ rooms:
 
       // Mosquito spawns offscreen somewhere
       this.mosquito = ct.types.copy('mosquito', 10, 10);
+      ct.types.copy('clock_desk_1', 64, 320);
 
       // Set game timer
-      this.initTime = 20000;
+      this.initTime = 10000;
       this.gameTimer = new CtTimer(this.initTime, 'gameTimer');
       this.gameTimer.then(() => {
           if (this.won) {
@@ -568,7 +779,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606550247436
+    lastmod: 1606603006186
   - name: EndWin
     oncreate: |-
       // Play bird music etc
