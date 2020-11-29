@@ -1310,7 +1310,7 @@ scripts: []
 starting: 0
 settings:
   authoring:
-    author: Nathan Laneau
+    author: ''
     site: ''
     title: ''
     version:
