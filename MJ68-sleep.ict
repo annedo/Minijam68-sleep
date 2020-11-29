@@ -941,6 +941,14 @@ sounds:
     uid: ad3d66a4-946b-4c9d-bdc1-79d0c67731ed
     origname: sad3d66a4-946b-4c9d-bdc1-79d0c67731ed.mp3
     lastmod: 1606607978327
+  - name: victory_tada
+    uid: 8bebc85a-d883-4243-80f8-5e313f12d7bd
+    origname: s8bebc85a-d883-4243-80f8-5e313f12d7bd.mp3
+    lastmod: 1606610454019
+  - name: failure_trombone
+    uid: 78ccc1e9-09cb-4464-9849-4294e3bac1ec
+    origname: s78ccc1e9-09cb-4464-9849-4294e3bac1ec.mp3
+    lastmod: 1606610463295
 styles: []
 rooms:
   - name: Main
@@ -954,7 +962,8 @@ rooms:
       // Mosquito spawns offscreen somewhere
       this.mosquito = ct.types.copy('mosquito', 10, 10);
       ct.sound.spawn('fly_buzzing', {
-          volume: 0.40
+          volume: 0.40,
+          loop: true
       });
 
       // Set game timer
@@ -1009,6 +1018,7 @@ rooms:
           // Determine if mosquito was under the hand
           if (ct.place.occupied(this.arm, 'Bug')) {
               this.mosquito.kill = true;
+              ct.sound.stop('fly_buzzing');
               ct.sound.spawn('critical_hit_slap', {
                   volume: 0.50
               });
@@ -1064,7 +1074,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606609301800
+    lastmod: 1606610474866
   - name: EndWin
     oncreate: |-
       // Play bird music etc
@@ -1074,6 +1084,9 @@ rooms:
           ct.sound.stop('morning');
           ct.sound.spawn('office_sounds', {
               volume: 0.50
+          });
+          ct.sound.spawn('victory_tada', {
+              volume: 0.40
           });
           
       });
@@ -1112,7 +1125,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606609330091
+    lastmod: 1606610504602
   - name: EndLose
     oncreate: |-
       // Play bird music etc
@@ -1122,6 +1135,9 @@ rooms:
           ct.sound.stop('morning');
           ct.sound.spawn('office_sounds', {
               volume: 0.50
+          });
+          ct.sound.spawn('failure_trombone', {
+              volume: 0.40
           });
       });
     onstep: ''
