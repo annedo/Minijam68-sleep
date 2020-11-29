@@ -428,6 +428,9 @@ textures:
     uid: c7c04ba1-a751-484a-9ef7-03b051237e4d
     padding: 1
     source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\bed_sheet_2.png'
+    ignoreTiledUse: true
+    tiled: true
+    lastmod: 1606620523971
   - name: blood_4
     untill: 0
     grid:
@@ -965,6 +968,16 @@ types:
     extends: {}
     uid: 013404df-ca58-4f6c-9fac-bdbb9eacff5a
     lastmod: 1606610810827
+  - name: bed_sheet_2
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: c7c04ba1-a751-484a-9ef7-03b051237e4d
+    extends: {}
+    uid: 53bb7dac-e48d-45cb-9a53-a39a63143e04
+    lastmod: 1606620365299
 sounds:
   - name: ambience_clock
     uid: 9efd0e31-b7d1-490a-b192-1e31c47a7033
@@ -998,6 +1011,10 @@ sounds:
     uid: 78ccc1e9-09cb-4464-9849-4294e3bac1ec
     origname: s78ccc1e9-09cb-4464-9849-4294e3bac1ec.mp3
     lastmod: 1606610463295
+  - name: alarm
+    uid: e808004b-d58d-4e28-8f92-5820fdd9b6a7
+    origname: se808004b-d58d-4e28-8f92-5820fdd9b6a7.mp3
+    lastmod: 1606619980987
 styles: []
 rooms:
   - name: Main
@@ -1008,21 +1025,27 @@ rooms:
       this.arm.scale.x = 0.5;
       this.won = false;
       this.mosquitoCounter = 0;
-      this.maxMosquito = 5;
+      this.maxMosquito = 45;
 
       this.SpawnMosquito = (() => {
           var randomX = ct.random.range(0, 800); // TODO - get this value from properties
           var randomY = ct.random.range(0, 600); // TODO - get this value from properties
+          ct.sound.spawn('fly_buzzing', {
+              volume: 0.40,
+              loop: true
+          });
 
           return ct.types.copy('mosquito', randomX, randomY);
+          
       });
+
+
+      // Initial mosquito spawn
+      this.mosquito = this.SpawnMosquito();
       ct.sound.spawn('fly_buzzing', {
           volume: 0.40,
           loop: true
       });
-
-      // Initial mosquito spawn
-      this.mosquito = this.SpawnMosquito();
 
       // Set game timer
       var timerLength = 60000;
@@ -1080,7 +1103,7 @@ rooms:
                   this.mosquito.kill = true;
                   ct.sound.stop('fly_buzzing');
                   ct.sound.spawn('critical_hit_slap', {
-                      volume: 0.50
+                      volume: 0.20
                   });
               }
               // Sound effect for missing a slap
@@ -1097,18 +1120,18 @@ rooms:
           }
 
           // Change bgs based off game statuses
-          if (!this.mosquito.kill) {
-              ct.backgrounds.add('furrowed', 0, -9);
-          }
+          // if (!this.mosquito.kill) {
+          //     ct.backgrounds.add('furrowed', 0, -9);
+          // }
 
-          if (this.gameTimer.timeLeft == 0 || this.mosquito.kill) {
-              if (this.won) {
-                  ct.backgrounds.add('happy', 0, -7); 
-              }
-              else {
-                  ct.backgrounds.add('lose', 0, -8);
-              }        
-          }
+          // if (this.gameTimer.timeLeft == 0 || this.mosquito.kill) {
+          //     if (this.won) {
+          //         ct.backgrounds.add('happy', 0, -7); 
+          //     }
+          //     else {
+          //         ct.backgrounds.add('lose', 0, -8);
+          //     }        
+          // }
 
           if (this.mosquito.kill && !this.won) {
               this.mosquitoCounter++;               
@@ -1132,7 +1155,7 @@ rooms:
         extends:
           repeat: no-repeat
       - depth: 10
-        texture: e3126ae9-8463-4f73-ae31-af1d423b7c1c
+        texture: c7c04ba1-a751-484a-9ef7-03b051237e4d
         extends:
           repeat: no-repeat
     copies:
@@ -1148,13 +1171,18 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606611445243
+    lastmod: 1606620506891
   - name: EndWin
     oncreate: |-
       // Play bird music etc
       let timer = ct.timer.add(3000, 'end');
+      ct.sound.spawn('alarm', {
+          volume: 0.30
+      });
+
       timer.then(() => {
           ct.backgrounds.add('win_1', 0, 5);
+          ct.sound.stop('alarm');
           ct.sound.stop('morning');
           ct.sound.spawn('office_sounds', {
               volume: 0.50
@@ -1199,14 +1227,18 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606610504602
+    lastmod: 1606620351290
   - name: EndLose
     oncreate: |-
       // Play bird music etc
       let timer = ct.timer.add(3000, 'end');
+      ct.sound.spawn('alarm', {
+          volume: 0.50
+      });
       timer.then(() => {
           ct.backgrounds.add('lose_screen', 0, 5);
           ct.sound.stop('morning');
+          ct.sound.stop('alarm');
           ct.sound.spawn('office_sounds', {
               volume: 0.50
           });
@@ -1237,7 +1269,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606610734058
+    lastmod: 1606620227388
 actions:
   - name: Tap
     methods:
@@ -1264,12 +1296,12 @@ settings:
     desktopMode: maximized
   export:
     windows: true
-    linux: true
+    linux: false
     mac: true
     functionWrap: false
     codeModifier: none
   branding:
-    icon: -1
+    icon: 21d7063d-d537-47fd-b9a3-d35de2b535fb
     accent: '#446adb'
     invertPreloaderScheme: true
   fps: 30
