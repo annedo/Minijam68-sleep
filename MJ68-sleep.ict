@@ -135,7 +135,7 @@ textures:
     closedStrip: true
     symmetryStrip: false
     r: 133
-    lastmod: 1606546217293
+    lastmod: 1606608925302
   - name: furrowed
     untill: 0
     grid:
@@ -378,6 +378,384 @@ textures:
     source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\happy_win_end.png'
     tiled: true
     lastmod: 1606548418554
+  - name: blood_1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 76
+    imgHeight: 76
+    width: 76
+    height: 76
+    offx: 0
+    offy: 0
+    origname: i7ccbc091-7019-4a8f-8e57-51a277f2040a.png
+    shape: rect
+    left: 0
+    right: 76
+    top: 0
+    bottom: 76
+    uid: 7ccbc091-7019-4a8f-8e57-51a277f2040a
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\blood_1.png'
+  - name: bed_sheet_2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: ic7c04ba1-a751-484a-9ef7-03b051237e4d.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: c7c04ba1-a751-484a-9ef7-03b051237e4d
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\bed_sheet_2.png'
+  - name: blood_4
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 77
+    imgHeight: 75
+    width: 77
+    height: 75
+    offx: 0
+    offy: 0
+    origname: i0142cc91-9657-4df2-ba0b-cfd57be21a49.png
+    shape: rect
+    left: 0
+    right: 77
+    top: 0
+    bottom: 75
+    uid: 0142cc91-9657-4df2-ba0b-cfd57be21a49
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\blood_4.png'
+  - name: clock_desk_4
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i25fe6ad4-6d19-4766-842b-69ec08cd2b3f.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 25fe6ad4-6d19-4766-842b-69ec08cd2b3f
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\clock_desk_4.png'
+  - name: blood_2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 76
+    imgHeight: 76
+    width: 76
+    height: 76
+    offx: 0
+    offy: 0
+    origname: i9f6c6ffa-0ec4-4739-86e6-48ff5ae0ba58.png
+    shape: rect
+    left: 0
+    right: 76
+    top: 0
+    bottom: 76
+    uid: 9f6c6ffa-0ec4-4739-86e6-48ff5ae0ba58
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\blood_2.png'
+  - name: clock_desk_2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i7d90ba77-110d-4903-86d0-1a71c62ccb11.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 7d90ba77-110d-4903-86d0-1a71c62ccb11
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\clock_desk_2.png'
+  - name: clock_desk_3
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i39405eb6-a0f9-4db5-9939-1495506be6bc.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 39405eb6-a0f9-4db5-9939-1495506be6bc
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\clock_desk_3.png'
+  - name: next_arrow
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: id9768e83-2141-42da-8b99-77d1e83e7c55.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: d9768e83-2141-42da-8b99-77d1e83e7c55
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\next_arrow.png'
+  - name: blood_3
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 76
+    imgHeight: 76
+    width: 76
+    height: 76
+    offx: 0
+    offy: 0
+    origname: ia5163b6c-ba6a-4b2f-95ff-b4bc8a4279f8.png
+    shape: rect
+    left: 0
+    right: 76
+    top: 0
+    bottom: 76
+    uid: a5163b6c-ba6a-4b2f-95ff-b4bc8a4279f8
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\blood_3.png'
+  - name: start_screen
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: i4cf478ca-cc0e-4b2c-8591-410741bc1400.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: 4cf478ca-cc0e-4b2c-8591-410741bc1400
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\start_screen.png'
+  - name: win_2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 600
+    width: 800
+    height: 600
+    offx: 0
+    offy: 0
+    origname: ib9f12cc0-efaa-43f8-af4e-44a56d816979.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 600
+    uid: b9f12cc0-efaa-43f8-af4e-44a56d816979
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\win_2.png'
+  - name: clock_desk_1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: iac61bcf2-36f0-402b-b46b-66463b138eb1.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: ac61bcf2-36f0-402b-b46b-66463b138eb1
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\clock_desk_1.png'
+    lastmod: 1606608935510
+    ignoreTiledUse: true
+    tiled: false
+  - name: clock_desk_5
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i46924767-176d-4425-9b70-41843c9feed5.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 46924767-176d-4425-9b70-41843c9feed5
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\clock_desk_5.png'
+  - name: clock_desk_7
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i45b4a2c8-6739-491d-a4c6-46ecd2520235.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 45b4a2c8-6739-491d-a4c6-46ecd2520235
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\clock_desk_7.png'
+  - name: clock_desk_6
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 205
+    imgHeight: 271
+    width: 205
+    height: 271
+    offx: 0
+    offy: 0
+    origname: i84786e06-b3dc-41b8-ab5f-81dc1a91a86b.png
+    shape: rect
+    left: 0
+    right: 205
+    top: 0
+    bottom: 271
+    uid: 84786e06-b3dc-41b8-ab5f-81dc1a91a86b
+    padding: 1
+    source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\clock_desk_6.png'
 skeletons: []
 types:
   - name: arm
@@ -468,7 +846,101 @@ types:
       ctype: Bug
     uid: 2d208313-f3b8-4520-9b57-897ebb99c198
     lastmod: 1606599187926
-sounds: []
+  - name: clock_desk_1
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: ac61bcf2-36f0-402b-b46b-66463b138eb1
+    extends: {}
+    uid: 391962e1-17cd-44c9-aea5-2d8e35ff59a8
+    lastmod: 1606608952524
+  - name: clock_desk_2
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 7d90ba77-110d-4903-86d0-1a71c62ccb11
+    extends: {}
+    uid: 351f748a-b243-401d-ba6a-392b4e165a1f
+    lastmod: 1606608959804
+  - name: clock_desk_3
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 39405eb6-a0f9-4db5-9939-1495506be6bc
+    extends: {}
+    uid: 445e0a39-e1bc-4d2f-b4c4-53ea94ad838c
+    lastmod: 1606608965070
+  - name: clock_desk_4
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 25fe6ad4-6d19-4766-842b-69ec08cd2b3f
+    extends: {}
+    uid: 3ccdcf6f-9ab8-4a36-855d-3e56fbde2b50
+    lastmod: 1606608969404
+  - name: clock_desk_5
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 46924767-176d-4425-9b70-41843c9feed5
+    extends: {}
+    uid: db66158e-be65-4c9e-abb2-e64d9740f314
+    lastmod: 1606608972202
+  - name: clock_desk_6
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 84786e06-b3dc-41b8-ab5f-81dc1a91a86b
+    extends: {}
+    uid: 84667c50-4fe6-4532-92df-e1c3d8f44d28
+    lastmod: 1606608975372
+  - name: clock_desk_7
+    depth: 2
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 45b4a2c8-6739-491d-a4c6-46ecd2520235
+    extends: {}
+    uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+    lastmod: 1606609167075
+sounds:
+  - name: ambience_clock
+    uid: 9efd0e31-b7d1-490a-b192-1e31c47a7033
+    origname: s9efd0e31-b7d1-490a-b192-1e31c47a7033.mp3
+    lastmod: 1606607953952
+  - name: critical_hit_slap
+    uid: f2d756a2-c89b-4f68-9c1b-1821f810599d
+    origname: sf2d756a2-c89b-4f68-9c1b-1821f810599d.mp3
+    lastmod: 1606607958669
+  - name: fly_buzzing
+    uid: e5935aa1-27bf-4592-a2ef-66f9a8a2b038
+    origname: se5935aa1-27bf-4592-a2ef-66f9a8a2b038.mp3
+    lastmod: 1606607963642
+  - name: miss_slap
+    uid: 7d8a52ab-c58f-4d7a-8098-9f5f9c2a7652
+    origname: s7d8a52ab-c58f-4d7a-8098-9f5f9c2a7652.mp3
+    lastmod: 1606607968559
+  - name: morning
+    uid: 38018e45-2091-4dcc-920a-b812a019d572
+    origname: s38018e45-2091-4dcc-920a-b812a019d572.mp3
+    lastmod: 1606607973524
+  - name: office_sounds
+    uid: ad3d66a4-946b-4c9d-bdc1-79d0c67731ed
+    origname: sad3d66a4-946b-4c9d-bdc1-79d0c67731ed.mp3
+    lastmod: 1606607978327
 styles: []
 rooms:
   - name: Main
@@ -481,24 +953,38 @@ rooms:
 
       // Mosquito spawns offscreen somewhere
       this.mosquito = ct.types.copy('mosquito', 10, 10);
+      ct.sound.spawn('fly_buzzing', {
+          volume: 0.40
+      });
 
       // Set game timer
-      this.initTime = 20000;
+      this.initTime = 60000;
       this.gameTimer = new CtTimer(this.initTime, 'gameTimer');
       this.gameTimer.then(() => {
           if (this.won) {
               ct.transition.fadeOut()
               .then(() => {
                   ct.rooms.switch('EndWin');
+                  ct.sound.spawn('morning', {
+                      volume: 0.40
+                  });
               });
           }
           else {
               ct.transition.fadeOut()
               .then(() => {
                   ct.rooms.switch('EndLose');
+                  ct.sound.spawn('morning', {
+                      volume: 0.40
+                  });
               });
           }
       })
+
+      // Start ambient sound
+      ct.sound.spawn('ambience_clock', {
+          volume: 0.50
+      });
     onstep: |
       // On tap action, animate the arm so that the hand slaps the tapped area
       if (ct.actions.Tap.pressed) {
@@ -523,7 +1009,14 @@ rooms:
           // Determine if mosquito was under the hand
           if (ct.place.occupied(this.arm, 'Bug')) {
               this.mosquito.kill = true;
+              ct.sound.spawn('critical_hit_slap', {
+                  volume: 0.50
+              });
           }
+          // Sound effect for missing a slap
+          ct.sound.spawn('miss_slap', {
+              volume: 0.50
+          });
       }
 
       // On release, put hand back under cover
@@ -558,7 +1051,10 @@ rooms:
         texture: e3126ae9-8463-4f73-ae31-af1d423b7c1c
         extends:
           repeat: no-repeat
-    copies: []
+    copies:
+      - x: 64
+        'y': 320
+        uid: 391962e1-17cd-44c9-aea5-2d8e35ff59a8
     tiles:
       - depth: -10
         tiles: []
@@ -568,13 +1064,18 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606550247436
+    lastmod: 1606609301800
   - name: EndWin
     oncreate: |-
       // Play bird music etc
       let timer = ct.timer.add(3000, 'end');
       timer.then(() => {
           ct.backgrounds.add('win_1', 0, 5);
+          ct.sound.stop('morning');
+          ct.sound.spawn('office_sounds', {
+              volume: 0.50
+          });
+          
       });
     onstep: ''
     ondraw: ''
@@ -586,7 +1087,22 @@ rooms:
         texture: d0fe2a61-bc49-4210-a653-dd6c7b968e48
         extends:
           repeat: no-repeat
-    copies: []
+    copies:
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+      - x: 64
+        'y': 320
+        uid: 391962e1-17cd-44c9-aea5-2d8e35ff59a8
     tiles:
       - depth: -10
         tiles: []
@@ -596,13 +1112,17 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606549932551
+    lastmod: 1606609330091
   - name: EndLose
     oncreate: |-
       // Play bird music etc
       let timer = ct.timer.add(3000, 'end');
       timer.then(() => {
           ct.backgrounds.add('lose_screen', 0, 5);
+          ct.sound.stop('morning');
+          ct.sound.spawn('office_sounds', {
+              volume: 0.50
+          });
       });
     onstep: ''
     ondraw: ''
@@ -614,7 +1134,10 @@ rooms:
         texture: 03feb0a4-9589-4504-ae99-9244442ee1d7
         extends:
           repeat: no-repeat
-    copies: []
+    copies:
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
     tiles:
       - depth: -10
         tiles: []
@@ -624,7 +1147,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606549881287
+    lastmod: 1606609196003
 actions:
   - name: Tap
     methods:
