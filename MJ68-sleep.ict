@@ -839,13 +839,19 @@ types:
     ondestroy: |-
       // For debugging
       //ct.types.copy('mosquito', ct.random.range(800), ct.random.range(600));
-
+      this.tex = ct.random.dice(
+          'blood_1',
+          'blood_2',
+          'blood_3',
+          'blood_4'
+      );
+      ct.types.copy(this.tex, this.x, this.y);
       this.getRoom().won = true;
     texture: e25f09d9-4e17-4c2f-abad-1021182c7dc8
     extends:
       ctype: Bug
     uid: 2d208313-f3b8-4520-9b57-897ebb99c198
-    lastmod: 1606599187926
+    lastmod: 1606611525340
   - name: clock_desk_1
     depth: 0
     oncreate: ''
@@ -916,6 +922,46 @@ types:
     extends: {}
     uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
     lastmod: 1606609167075
+  - name: blood_1
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 7ccbc091-7019-4a8f-8e57-51a277f2040a
+    extends: {}
+    uid: ec81fe1e-cac8-407d-b1e9-51ffffac97e9
+    lastmod: 1606611530250
+  - name: blood_2
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 9f6c6ffa-0ec4-4739-86e6-48ff5ae0ba58
+    extends: {}
+    uid: a9c14f4c-86cf-4bd1-8d10-62dd25bcf093
+    lastmod: 1606610802365
+  - name: blood_3
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: a5163b6c-ba6a-4b2f-95ff-b4bc8a4279f8
+    extends: {}
+    uid: 5f5b4212-f914-4550-a154-dd1a8b1d1b5a
+    lastmod: 1606610805074
+  - name: blood_4
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 0142cc91-9657-4df2-ba0b-cfd57be21a49
+    extends: {}
+    uid: 013404df-ca58-4f6c-9fac-bdbb9eacff5a
+    lastmod: 1606610810827
 sounds:
   - name: ambience_clock
     uid: 9efd0e31-b7d1-490a-b192-1e31c47a7033
@@ -1163,7 +1209,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606609196003
+    lastmod: 1606610734058
 actions:
   - name: Tap
     methods:
