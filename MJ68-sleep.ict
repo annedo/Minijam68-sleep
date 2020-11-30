@@ -243,7 +243,7 @@ textures:
     padding: 1
     source: 'C:\Users\hieua\ct.js\Projects\MJ68-sleep\MJ68_assets\lose.png'
     tiled: true
-    lastmod: 1606548223793
+    lastmod: 1606705158782
   - name: mosquito
     untill: 0
     grid:
@@ -581,6 +581,7 @@ textures:
     uid: d9768e83-2141-42da-8b99-77d1e83e7c55
     padding: 1
     source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\next_arrow.png'
+    lastmod: 1606705177471
   - name: blood_3
     untill: 0
     grid:
@@ -631,6 +632,7 @@ textures:
     uid: 4cf478ca-cc0e-4b2c-8591-410741bc1400
     padding: 1
     source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\start_screen.png'
+    lastmod: 1606705167461
   - name: win_2
     untill: 0
     grid:
@@ -854,7 +856,7 @@ types:
     extends:
       ctype: Bug
     uid: 2d208313-f3b8-4520-9b57-897ebb99c198
-    lastmod: 1606611525340
+    lastmod: 1606705981058
   - name: clock_desk_1
     depth: 0
     oncreate: |-
@@ -1042,7 +1044,314 @@ rooms:
       this.arm.scale.x = 0.5;
       this.won = false;
       this.mosquitoCounter = 0;
-      this.maxMosquito = 45;
+      this.maxMosquito = 1;
+
+      // Returns a mosquito that is set to spawn along the perimeter of the room
+      this.SpawnMosquito = (() => {
+          var edgeSpawn = Math.floor(ct.random.range(0, 4)); // Random screen edge for the spawn
+
+          var maxWidth = ct.camera.width;
+          var maxHeight = ct.camera.height;
+
+          var spawnPadding = 10;
+
+          var randomX = 0;
+          var randomY = 0;
+          switch (edgeSpawn) {
+              case 0:
+                  // TOP
+                  randomX = ct.random.range(0, maxWidth);
+                  randomY = ct.random.range(0, spawnPadding);
+                  break;
+              case 1:
+                  // RIGHT
+                  randomX = ct.random.range((maxWidth - spawnPadding), maxWidth);
+                  randomY = ct.random.range(0, maxHeight);
+                  break;
+              case 2:
+                  // BOTTOM
+                  randomX = ct.random.range(0, maxWidth);
+                  randomY = ct.random.range(maxHeight - spawnPadding, maxHeight);
+                  break;
+              case 3:
+                  // LEFT
+                  randomX = ct.random.range(0, spawnPadding);
+                  randomY = ct.random.range(0, maxHeight);
+                  break;
+              default:
+                  // TOP
+                  randomX = ct.random.range(0, maxWidth);
+                  randomY = ct.random.range(0, spawnPadding);
+                  break;
+          }
+
+          return ct.types.copy('mosquito', randomX, randomY);
+          
+      });
+
+      // Initial mosquito spawn
+      this.mosquito = this.SpawnMosquito();
+
+      // Start sounds
+      ct.sound.spawn('ambience_clock', {
+          volume: 0.50
+      });
+      ct.sound.spawn('fly_buzzing', {
+          volume: 0.40,
+          loop: true
+      });
+
+      // Set game timer
+      var timerLength = 10000;
+      var timerName = 'gameTimer';
+      // Set to access from clock_desk type
+      this.timerLength = timerLength;
+
+      this.gameTimer = new CtTimer(timerLength, timerName);
+
+      this.gameTimer.then(() => {
+          console.log("Time's up!");
+          if (this.won) {
+              ct.transition.fadeOut()
+              .then(() => {
+                  ct.rooms.switch('EndWin');
+              });
+          }
+          else {
+              ct.transition.fadeOut()
+              .then(() => {
+                  ct.rooms.switch('EndLose');
+              });
+          }
+      })
+    onstep: |2-
+          // On tap action, animate the arm so that the hand slaps the tapped area
+          if (ct.actions.Tap.pressed) {
+              // Get direction of tap
+              let direction = ct.u.pointDirection(448, 320, ct.touch.x, ct.touch.y);
+              // Rotate arm towards tap
+              this.arm.rotation = direction - 180;
+              
+              // Get distance of tap
+              let distance = ct.u.pointDistance(448, 320, ct.touch.x, ct.touch.y);
+              // Scale so hitbox ends on tap
+              if (distance > 334) {
+                  this.arm.scale.x = 1;
+                  this.arm.scale.y = 1;
+              }
+              else {
+                  let shortScale = distance/334;
+                  this.arm.scale.x = shortScale;
+                  this.arm.scale.y = shortScale;
+              }
+
+              // Determine if mosquito was under the hand
+              if (ct.place.occupied(this.arm, 'Bug')) {
+                  this.mosquito.kill = true;
+                  ct.sound.stop('fly_buzzing');
+                  ct.sound.spawn('critical_hit_slap', {
+                      volume: 0.20
+                  });
+              }
+              // Sound effect for missing a slap
+              ct.sound.spawn('miss_slap', {
+                  volume: 0.50
+              });
+            }
+          
+          // On release, put hand back under cover
+          if (ct.actions.Tap.released) {
+              this.arm.rotation = 170;
+              this.arm.scale.x = 0.5;
+              this.arm.scale.y = 1;
+          }
+
+          // Change bgs based off game statuses
+          if (this.gameTimer.timeLeft < this.gameTimer.time && !this.won) {
+              if (!ct.backgrounds.list['furrowed']) {
+                  ct.backgrounds.add('furrowed', 0, -9); // after half of time has elapsed
+              }        
+          }
+
+          if (this.gameTimer.timeLeft == 0) {
+              if (!this.won) {
+                  if (!ct.backgrounds.list['lose']) {
+                  ct.backgrounds.add('lose', 0, -7); // running out of time and if you lost
+                  }
+              }  
+          }
+
+          if (this.mosquito.kill && !this.won) {
+              this.mosquitoCounter++;               
+          }
+
+          if (this.mosquitoCounter >= this.maxMosquito) {    
+              this.won = true;
+              if (!ct.backgrounds.list['happy']) {
+                  ct.backgrounds.add('happy', 0, -8); // killed all mosquitoes
+              }    
+          }
+          else if (this.mosquito.kill) {
+              this.mosquito = this.SpawnMosquito();
+          }
+    ondraw: ''
+    onleave: |-
+      // End clock sounds
+      ct.sound.stop('ambience_clock');
+      ct.sound.stop('fly_buzzing');
+    width: 800
+    height: 600
+    backgrounds:
+      - depth: -10
+        texture: 20fd1743-9f84-4092-a412-e37d84aff776
+        extends:
+          repeat: no-repeat
+      - depth: 10
+        texture: c7c04ba1-a751-484a-9ef7-03b051237e4d
+        extends:
+          repeat: no-repeat
+    copies:
+      - x: 64
+        'y': 320
+        uid: 391962e1-17cd-44c9-aea5-2d8e35ff59a8
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 55371b42-52a0-44ea-b577-93690c654ee9
+    thumbnail: 93690c654ee9
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1606707509147
+  - name: EndWin
+    oncreate: |-
+      // Play bird music etc
+      let timer = ct.timer.add(3000, 'end');
+      ct.sound.spawn('alarm', {
+          volume: 0.30
+      });
+
+      timer.then(() => {
+          ct.backgrounds.add('win_1', 0, 5);
+          ct.sound.stop('alarm');
+          ct.sound.stop('morning');
+          ct.sound.spawn('office_sounds', {
+              volume: 0.50
+          });
+          ct.sound.spawn('victory_tada', {
+              volume: 0.40
+          });
+          
+      });
+    onstep: |-
+      if (ct.backgrounds.list['win_1']) {
+          if (ct.actions.Tap.pressed) {
+              ct.transition.fadeOut()
+              .then(() => {
+                  ct.rooms.switch('Main_GamePlus');
+              });
+          }
+      }
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds:
+      - depth: -10
+        texture: d0fe2a61-bc49-4210-a653-dd6c7b968e48
+        extends:
+          repeat: no-repeat
+    copies:
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+      - x: 64
+        'y': 320
+        uid: 391962e1-17cd-44c9-aea5-2d8e35ff59a8
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: bf0c3960-2fbe-4282-af1b-f5c4e05b93c1
+    thumbnail: f5c4e05b93c1
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1606707350073
+  - name: EndLose
+    oncreate: |-
+      // Play bird music etc
+      let timer = ct.timer.add(3000, 'end');
+      ct.sound.spawn('alarm', {
+          volume: 0.50
+      });
+      ct.sound.spawn('morning', {
+          volume: 0.40
+      });
+
+      timer.then(() => {
+          ct.backgrounds.add('lose_screen', 0, 5);
+          ct.sound.stop('morning');
+          ct.sound.stop('alarm');
+          ct.sound.spawn('office_sounds', {
+              volume: 0.50
+          });
+          ct.sound.spawn('failure_trombone', {
+              volume: 0.40
+          });
+      });
+    onstep: |-
+      if (ct.backgrounds.list['lose_screen']) {
+          if (ct.actions.Tap.pressed) {
+              ct.transition.fadeOut()
+              .then(() => {
+                  ct.rooms.switch('Main_GamePlus');
+              });
+          }
+      }
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds:
+      - depth: -10
+        texture: 03feb0a4-9589-4504-ae99-9244442ee1d7
+        extends:
+          repeat: no-repeat
+    copies:
+      - x: 64
+        'y': 320
+        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 8e07aede-668f-4b7b-aff6-91f9385d1de3
+    thumbnail: 91f9385d1de3
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1606707337097
+  - name: Main_GamePlus
+    oncreate: |-
+      // Starting position of arm rotated 170, scale X 0.5
+      this.arm = ct.types.copy('arm', 448, 320);
+      this.arm.rotation = 170;
+      this.arm.scale.x = 0.5;
+      this.won = false;
+      this.mosquitoCounter = 0;
+      // More for NewGame+
+      this.maxMosquito = ct.random.range(5, 30);
 
       // Returns a mosquito that is set to spawn along the perimeter of the room
       this.SpawnMosquito = (() => {
@@ -1095,8 +1404,8 @@ rooms:
           loop: true
       });
 
-      // Set game timer
-      var timerLength = 60000;
+      // Set game timer (longer for NewGame+)
+      var timerLength = 30000;
       var timerName = 'gameTimer';
 
       // Set to access from clock_desk type
@@ -1200,7 +1509,10 @@ rooms:
               this.mosquito = this.SpawnMosquito();
           }
     ondraw: ''
-    onleave: ''
+    onleave: |-
+      // End clock sounds
+      ct.sound.stop('ambience_clock');
+      ct.sound.stop('fly_buzzing');
     width: 800
     height: 600
     backgrounds:
@@ -1220,110 +1532,12 @@ rooms:
       - depth: -10
         tiles: []
         extends: {}
-    uid: 55371b42-52a0-44ea-b577-93690c654ee9
-    thumbnail: 93690c654ee9
+    uid: 161e9c11-3ab7-4893-9342-aee229d5a0f7
+    thumbnail: aee229d5a0f7
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1606620506891
-  - name: EndWin
-    oncreate: |-
-      // Play bird music etc
-      let timer = ct.timer.add(3000, 'end');
-      ct.sound.spawn('alarm', {
-          volume: 0.30
-      });
-
-      timer.then(() => {
-          ct.backgrounds.add('win_1', 0, 5);
-          ct.sound.stop('alarm');
-          ct.sound.stop('morning');
-          ct.sound.spawn('office_sounds', {
-              volume: 0.50
-          });
-          ct.sound.spawn('victory_tada', {
-              volume: 0.40
-          });
-          
-      });
-    onstep: ''
-    ondraw: ''
-    onleave: ''
-    width: 800
-    height: 600
-    backgrounds:
-      - depth: -10
-        texture: d0fe2a61-bc49-4210-a653-dd6c7b968e48
-        extends:
-          repeat: no-repeat
-    copies:
-      - x: 64
-        'y': 320
-        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
-      - x: 64
-        'y': 320
-        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
-      - x: 64
-        'y': 320
-        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
-      - x: 64
-        'y': 320
-        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
-      - x: 64
-        'y': 320
-        uid: 391962e1-17cd-44c9-aea5-2d8e35ff59a8
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: bf0c3960-2fbe-4282-af1b-f5c4e05b93c1
-    thumbnail: f5c4e05b93c1
-    extends: {}
-    gridX: 64
-    gridY: 64
-    lastmod: 1606620351290
-  - name: EndLose
-    oncreate: |-
-      // Play bird music etc
-      let timer = ct.timer.add(3000, 'end');
-      ct.sound.spawn('alarm', {
-          volume: 0.50
-      });
-      timer.then(() => {
-          ct.backgrounds.add('lose_screen', 0, 5);
-          ct.sound.stop('morning');
-          ct.sound.stop('alarm');
-          ct.sound.spawn('office_sounds', {
-              volume: 0.50
-          });
-          ct.sound.spawn('failure_trombone', {
-              volume: 0.40
-          });
-      });
-    onstep: ''
-    ondraw: ''
-    onleave: ''
-    width: 800
-    height: 600
-    backgrounds:
-      - depth: -10
-        texture: 03feb0a4-9589-4504-ae99-9244442ee1d7
-        extends:
-          repeat: no-repeat
-    copies:
-      - x: 64
-        'y': 320
-        uid: f1e7e95f-91fd-41a0-9b5d-3472e638e065
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: 8e07aede-668f-4b7b-aff6-91f9385d1de3
-    thumbnail: 91f9385d1de3
-    extends: {}
-    gridX: 64
-    gridY: 64
-    lastmod: 1606620227388
+    lastmod: 1606707657981
 actions:
   - name: Tap
     methods:
@@ -1336,11 +1550,11 @@ scripts:
 starting: 0
 settings:
   authoring:
-    author: ''
-    site: ''
-    title: ''
+    author: 'Kevin Phan, Anne Do, Nathan Laneau'
+    site: 'https://github.com/annedo/Minijam68-sleep'
+    title: Wagey Wakey
     version:
-      - 0
+      - 1
       - 0
       - 0
     versionPostfix: ''
