@@ -850,7 +850,6 @@ types:
           'blood_4'
       );
       ct.types.copy(this.tex, this.x, this.y);
-
     texture: e25f09d9-4e17-4c2f-abad-1021182c7dc8
     extends:
       ctype: Bug
@@ -858,14 +857,34 @@ types:
     lastmod: 1606611525340
   - name: clock_desk_1
     depth: 0
-    oncreate: ''
+    oncreate: |-
+      this.currentFace = 1;
+
+      // For some reason, copy can't access Room OnCreate properties right away
+      var initTimer = ct.timer.add(500, 'roomInit');
+
+      initTimer.then(() => {
+          // 
+          this.timeStep = (ct.room.timerLength-500)/6;
+
+          this.interval = setInterval(() => {
+              if (this.currentFace < 7) {
+                  this.currentFace++;
+                  this.tex = 'clock_desk_' + this.currentFace;
+              }
+              else {
+                  clearInterval(this.interval);
+              }
+          }, this.timeStep);
+
+      });
     onstep: this.move();
     ondraw: ''
     ondestroy: ''
     texture: ac61bcf2-36f0-402b-b46b-66463b138eb1
     extends: {}
     uid: 391962e1-17cd-44c9-aea5-2d8e35ff59a8
-    lastmod: 1606608952524
+    lastmod: 1606702528907
   - name: clock_desk_2
     depth: 0
     oncreate: ''
@@ -912,10 +931,10 @@ types:
     onstep: this.move();
     ondraw: ''
     ondestroy: ''
-    texture: 84786e06-b3dc-41b8-ab5f-81dc1a91a86b
+    texture: 4b43d731-45c2-4f53-bce5-76620641bf18
     extends: {}
     uid: 84667c50-4fe6-4532-92df-e1c3d8f44d28
-    lastmod: 1606608975372
+    lastmod: 1606702534648
   - name: clock_desk_7
     depth: 2
     oncreate: ''
@@ -1013,68 +1032,6 @@ sounds:
     uid: e808004b-d58d-4e28-8f92-5820fdd9b6a7
     origname: se808004b-d58d-4e28-8f92-5820fdd9b6a7.mp3
     lastmod: 1606619980987
-  - name: clock_desk_1
-    depth: 9
-    oncreate: |-
-      this.currentFace = 1;
-
-      // For some reason, copy can't access Room OnCreate properties right away
-      var initTimer = ct.timer.add(500, 'roomInit');
-
-      initTimer.then(() => {
-          // 
-          this.timeStep = (ct.room.timerLength-500)/6;
-
-          this.interval = setInterval(() => {
-              if (this.currentFace < 7) {
-                  this.currentFace++;
-                  this.tex = 'clock_desk_' + this.currentFace;
-              }
-              else {
-                  clearInterval(this.interval);
-              }
-          }, this.timeStep);
-
-      });
-    onstep: >-
-      // Change clock face at every 6th interval so it doesn't matter what the
-      starting time is
-
-
-
-
-
-      /*this.clockTimer -= ct.delta;
-
-      console.log(this.clockTimer)
-
-      if (this.clockTimer <= 0) {
-          // Reset timer
-          this.clockTimer = this.timeStep;
-
-          // Change face texture if not the last one
-          if (this.currentFace < 7) {
-              this.currentFace += 1;
-              this.tex = 'clock_desk_' + this.currentFace;
-          }
-          console.log(this.currentFace);
-      }*/
-    ondraw: ''
-    ondestroy: ''
-    texture: 66739ca4-4e35-4054-ba7c-88d353ed64a4
-    extends: {}
-    uid: 8316dc22-8316-47c5-bd98-4392f091de44
-    lastmod: 1606627051742
-  - name: clock_desk_7
-    depth: 0
-    oncreate: // This is just environmental
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: ba61f364-41fb-42e2-b164-6bcb2c75c75b
-    extends: {}
-    uid: bd069096-fff6-4651-905a-a44aae70481c
-    lastmod: 1606627379396
 styles: []
 rooms:
   - name: Main
