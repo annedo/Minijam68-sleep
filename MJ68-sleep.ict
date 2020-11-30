@@ -750,13 +750,13 @@ textures:
     height: 271
     offx: 0
     offy: 0
-    origname: i84786e06-b3dc-41b8-ab5f-81dc1a91a86b.png
+    origname: i4b43d731-45c2-4f53-bce5-76620641bf18.png
     shape: rect
     left: 0
     right: 205
     top: 0
     bottom: 271
-    uid: 84786e06-b3dc-41b8-ab5f-81dc1a91a86b
+    uid: 4b43d731-45c2-4f53-bce5-76620641bf18
     padding: 1
     source: 'C:\Users\Kevin Phan\Desktop\animation frames\MJ68_assests\clock_desk_6.png'
 skeletons: []
@@ -788,7 +788,7 @@ types:
     texture: e3126ae9-8463-4f73-ae31-af1d423b7c1c
     extends: {}
     uid: f7d138a7-ec06-4853-b6c7-950d118f8a8e
-    lastmod: 1606602706741
+    lastmod: 1606602891235
   - name: mosquito
     depth: 20
     oncreate: |-
@@ -1014,6 +1014,68 @@ sounds:
     uid: e808004b-d58d-4e28-8f92-5820fdd9b6a7
     origname: se808004b-d58d-4e28-8f92-5820fdd9b6a7.mp3
     lastmod: 1606619980987
+  - name: clock_desk_1
+    depth: 9
+    oncreate: |-
+      this.currentFace = 1;
+
+      // For some reason, copy can't access Room OnCreate properties right away
+      var initTimer = ct.timer.add(500, 'roomInit');
+
+      initTimer.then(() => {
+          // 
+          this.timeStep = (ct.room.timerLength-500)/6;
+
+          this.interval = setInterval(() => {
+              if (this.currentFace < 7) {
+                  this.currentFace++;
+                  this.tex = 'clock_desk_' + this.currentFace;
+              }
+              else {
+                  clearInterval(this.interval);
+              }
+          }, this.timeStep);
+
+      });
+    onstep: >-
+      // Change clock face at every 6th interval so it doesn't matter what the
+      starting time is
+
+
+
+
+
+      /*this.clockTimer -= ct.delta;
+
+      console.log(this.clockTimer)
+
+      if (this.clockTimer <= 0) {
+          // Reset timer
+          this.clockTimer = this.timeStep;
+
+          // Change face texture if not the last one
+          if (this.currentFace < 7) {
+              this.currentFace += 1;
+              this.tex = 'clock_desk_' + this.currentFace;
+          }
+          console.log(this.currentFace);
+      }*/
+    ondraw: ''
+    ondestroy: ''
+    texture: 66739ca4-4e35-4054-ba7c-88d353ed64a4
+    extends: {}
+    uid: 8316dc22-8316-47c5-bd98-4392f091de44
+    lastmod: 1606627051742
+  - name: clock_desk_7
+    depth: 0
+    oncreate: // This is just environmental
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: ba61f364-41fb-42e2-b164-6bcb2c75c75b
+    extends: {}
+    uid: bd069096-fff6-4651-905a-a44aae70481c
+    lastmod: 1606627379396
 styles: []
 rooms:
   - name: Main
@@ -1081,9 +1143,13 @@ rooms:
       var timerLength = 60000;
       var timerName = 'gameTimer';
 
+      // Set to access from clock_desk type
+      this.timerLength = timerLength;
+
       this.gameTimer = new CtTimer(timerLength, timerName);
 
       this.gameTimer.then(() => {
+          console.log("Time's up!");
           if (this.won) {
               ct.transition.fadeOut()
               .then(() => {
@@ -1150,18 +1216,6 @@ rooms:
           }
 
           // Change bgs based off game statuses
-          // if (!this.mosquito.kill) {
-          //     ct.backgrounds.add('furrowed', 0, -9);
-          // }
-
-          // if (this.gameTimer.timeLeft == 0 || this.mosquito.kill) {
-          //     if (this.won) {
-          //         ct.backgrounds.add('happy', 0, -7); 
-          //     }
-          //     else {
-          //         ct.backgrounds.add('lose', 0, -8);
-          //     }        
-          // }
 
           if (this.mosquito.kill && !this.won) {
               this.mosquitoCounter++;               
@@ -1229,7 +1283,7 @@ rooms:
     width: 800
     height: 600
     backgrounds:
-      - depth: 0
+      - depth: -10
         texture: d0fe2a61-bc49-4210-a653-dd6c7b968e48
         extends:
           repeat: no-repeat
@@ -1283,7 +1337,7 @@ rooms:
     width: 800
     height: 600
     backgrounds:
-      - depth: 1
+      - depth: -10
         texture: 03feb0a4-9589-4504-ae99-9244442ee1d7
         extends:
           repeat: no-repeat
