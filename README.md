@@ -5,3 +5,7 @@ Theme: Sleep
 Limitation: No Text
 
 A game about trying to get a good night's sleep.
+Made with ct.js
+
+## Play Now: Wagey Wakey
+https://annedo.itch.io/wagey-wakey
